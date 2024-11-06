@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Documentation</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <style>
+    .matrix-green {
+      color: #00FF00;
+      /* Matrix green */
+    }
+
+    .accent-color {
+      color: #00FFFF; /* Cyan */
+    }
+
+    pre {
+      background-color: #212529;
+      /* Dark background for code blocks */
+      color: #eee;
+      /* Light text color for code blocks */
+      padding: 1rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+    }
+
+    .code-container {
+      display: flex;
+      align-items: stretch;
+    }
+
+    .code-container .card {
+      flex: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header class="mt-5">
+      <h1 class="display-4 matrix-green">Cipher API</h1>
+      <p class="lead">by Jonathan Rampersad</p> <p class="lead">This API provides endpoints for encrypting and decrypting messages using various classical ciphers. 
+        Explore the documentation below to learn how to integrate these ciphers into your applications.</p>
+    </header>
+
+    <section class="mt-5">
+      <h2 class="matrix-green">Caeser Cipher</h2>
+      <p>This endpoint encrypts or decrypts text using the Caesar cipher. The Caesar cipher is a simple substitution
+        cipher that shifts each letter in the plaintext message a certain number of positions down the alphabet.</p>
+      <div class="card bg-dark">
+        <div class="card-body">
+          <h5 class="card-title"><span class="accent-color">POST</span> <span class="accent-color">/api/caeser</span></h5>
+          <p class="card-text">Encrypts or decrypts text using the Caesar cipher.</p>
+          <h6 class="matrix-green">Request Body</h6>
+          <pre>
+{
+"text": "string",
+"shift": number,
+"mode": "encrypt" | "decrypt"
+}
+          </pre>
+          <h6 class="matrix-green">Response Body</h6>
+          <pre>
+{
+"encryptedText": "string"
+}
+          </pre>
+        </div>
+      </div>
+      <h6 class="matrix-green mt-3">Examples</h6>
+      <div class="code-container">
+        <div class="card bg-dark">
+          <div class="card-body">
+            <h6>JavaScript</h6>
+            <pre>
+const data = {
+text: "hello",
+shift: 3,
+mode: "encrypt"
+};
+
+fetch('<span class="accent-color">/api/caeser</span>', {
+method: 'POST',
+headers: {
+'Content-Type': 'application/json'
+},
+body: JSON.stringify(data)
+})
+.then(response => response.json())
+.then(data => console.log(data));
+            </pre>
+          </div>
+        </div>
+        <div class="card bg-dark">
+          <div class="card-body">
+            <h6>Python</h6>
+            <pre>
+import requests
+
+data = {
+"text": "hello",
+"shift": 3,
+"mode": "encrypt"
+}
+
+response = requests.post('<span class="accent-color">/api/caeser</span>', json=data)
+print(response.json())
+            </pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-5">
+      <h2 class="matrix-green">Vigenere Cipher</h2>
+      <p>This endpoint encrypts or decrypts text using the Vigenere cipher. The Vigenere cipher is a method of
+        encrypting alphabetic text using a polyalphabetic substitution based on the letters of a keyword.</p>
+      <div class="card bg-dark">
+        <div class="card-body">
+          <h5 class="card-title"><span class="accent-color">POST</span> <span class="accent-color">/api/vigenere</span></h5>
+          <p class="card-text">Encrypts or decrypts text using the Vigenere cipher.</p>
+          <h6 class="matrix-green">Request Body</h6>
+          <pre>
+{
+"text": "string",
+"key": "string",
+"mode": "encrypt" | "decrypt"
+}
+          </pre>
+          <h6 class="matrix-green">Response Body</h6>
+          <pre>
+{
+"encryptedText": "string"
+}
+          </pre>
+        </div>
+      </div>
+      <h6 class="matrix-green mt-3">Examples</h6>
+      <div class="code-container">
+        <div class="card bg-dark">
+          <div class="card-body">
+            <h6>JavaScript</h6>
+            <pre>
+const data = {
+text: "hello",
+key: "world",
+mode: "encrypt"
+};
+
+fetch('<span class="accent-color">/api/vigenere</span>', {
+method: 'POST',
+headers: {
+'Content-Type': 'application/json'
+},
+body: JSON.stringify(data)
+})
+.then(response => response.json())
+.then(data => console.log(data));
+            </pre>
+          </div>
+        </div>
+        <div class="card bg-dark">
+          <div class="card-body">
+            <h6>Python</h6>
+            <pre>
+import requests
+
+data = {
+"text": "hello",
+"key": "world",
+"mode": "encrypt"
+}
+
+response = requests.post('<span class="accent-color">/api/vigenere</span>', json=data)
+print(response.json())
+            </pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-5">
+      <h2 class="matrix-green">Atbash Cipher</h2>
+      <p>This endpoint encrypts or decrypts text using the Atbash cipher. The Atbash cipher is a simple substitution
+        cipher that reverses the alphabet, so 'A' becomes 'Z', 'B' becomes 'Y', and so on.</p>
+      <div class="card bg-dark">
+        <div class="card-body">
+          <h5 class="card-title"><span class="accent-color">POST</span> <span class="accent-color">/api/atbash</span></h5>
+          <p class="card-text">Encrypts or decrypts text using the Atbash cipher.</p>
+          <h6 class="matrix-green">Request Body</h6>
+          <pre>
+{
+"text": "string",
+"mode": "encrypt" | "decrypt"
+}
+          </pre>
+          <h6 class="matrix-green">Response Body</h6>
+          <pre>
+{
+"encryptedText": "string"
+}
+          </pre>
+        </div>
+      </div>
+      <h6 class="matrix-green mt-3">Examples</h6>
+      <div class="code-container">
+        <div class="card bg-dark">
+          <div class="card-body">
+            <h6>JavaScript</h6>
+            <pre>
+const data = {
+text: "hello",
+mode: "encrypt"
+};
+
+fetch('<span class="accent-color">/api/atbash</span>', {
+method: 'POST',
+headers: {
+'Content-Type': 'application/json'
+},
+body: JSON.stringify(data)
+})
+.then(response => response.json())
+.then(data => console.log(data));
+            </pre>
+          </div>
+        </div>
+        <div class="card bg-dark">
+          <div class="card-body">
+            <h6>Python</h6>
+            <pre>
+import requests
+
+data = {
+"text": "hello",
+"mode": "encrypt"
+}
+
+response = requests.post('<span class="accent-color">/api/atbash</span>', json=data)
+print(response.json())
+            </pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+  <footer class="bg-dark text-light py-4 mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <p style="font-size: 12px;">&copy; 2023 Jonathan Rampersad. This work is licensed under a <a href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank" rel="noopener noreferrer">GNU General Public License v3.0</a>.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <a style="font-size: 12px; text-decoration: none;" href="https://github.com/jono-rams/cipher-api" target="_blank" rel="noopener noreferrer">
+            <img src="img/github-logo.svg" alt="GitHub logo" height="24">
+            View on GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+</body>
+</html>
