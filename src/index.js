@@ -34,7 +34,7 @@ function caeser(char, shift) {
 function vigenere(text, key, mode) {
   let result = '';
   const textArray = text.split('');
-  const keyArray = key.split('').map((char) => alphabetLC.indexOf(char));
+  let keyArray = key.split('').map((char) => alphabetLC.indexOf(char));
 
   if (mode === 'decrypt') {
     keyArray = keyArray.map((char) => 26 - char);
@@ -73,12 +73,13 @@ app.post('/api/caeser', async (c) => {
   }
 
   if (mode === 'decrypt') {
-    shift = 26 - shift;
+    const dShift = 26 - shift;
+    const encryptedText = text.split('').map((char) => caeser(char, dShift)).join('');
+    return c.json({ encryptedText });
+  } else {
+    const encryptedText = text.split('').map((char) => caeser(char, shift)).join('');
+    return c.json({ encryptedText });
   }
-
-  const encryptedText = text.split('').map((char) => caeser(char, shift)).join('');
-
-  return c.json({ encryptedText });
 });
 
 app.post('/api/vigenere', async (c) => {
