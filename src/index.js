@@ -15,12 +15,17 @@ app.use('*', cors({
 const alphabetLC = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 const alphabetUC = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
-function atbash(text, mode) {
-  if (mode === 'decrypt') {
-    return text.split('').map((char) => caeser(char, 1)).join('');
-  } else {
-    return text.split('').map((char) => caeser(char, 25)).join('');
-  }
+const reverseAlphabetLC = [...alphabetLC].reverse();
+const reverseAlphabetUC = [...alphabetUC].reverse();
+
+function atbash(text) {
+  return text.split('').map((char) => {
+    if (alphabetLC.includes(char)) {
+      return reverseAlphabetLC[alphabetLC.indexOf(char)];
+    } else if (alphabetUC.includes(char)) {
+      return reverseAlphabetUC[alphabetUC.indexOf(char)];
+    }
+  }).join('');
 }
 
 function caeser(char, shift) {
