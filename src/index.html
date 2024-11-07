@@ -3,37 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>API Documentation</title>
+  <title>Cipher API</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   <style>
     .matrix-green {
-      color: #00FF00;
-      /* Matrix green */
-    }
+  color: #00FF00; /* Matrix green */
+}
 
-    .accent-color {
-      color: #00FFFF; /* Cyan */
-    }
+.accent-color {
+  color: #00FFFF; /* Cyan */
+}
 
-    pre {
-      background-color: #212529;
-      /* Dark background for code blocks */
-      color: #eee;
-      /* Light text color for code blocks */
-      padding: 1rem;
-      border-radius: 0.5rem;
-      overflow-x: auto;
-    }
+pre {
+  background-color: #212529; /* Dark background for code blocks */
+  color: #eee; /* Light text color for code blocks */
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  white-space: pre-wrap; /* Allow line breaks in preformatted text */
+  word-break: break-all; /* Break long words */
+}
 
-    .code-container {
-      display: flex;
-      align-items: stretch;
-    }
+.code-container {
+  display: flex;
+  flex-direction: column; /* Stack code examples vertically on small screens */
+  align-items: stretch;
+}
 
-    .code-container .card {
-      flex: 1;
-    }
+.code-container .card {
+  flex: 1;
+  margin-bottom: 1rem; /* Add spacing between examples on small screens */
+}
+
+@media (min-width: 768px) {
+  .code-container {
+    flex-direction: row; /* Display examples side-by-side on larger screens */
+  }
+}
   </style>
 </head>
 
@@ -242,6 +249,47 @@ response = requests.post('<span class="accent-color">/api/atbash</span>', json=d
 print(response.json())
             </pre>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-5">
+      <h2 class="matrix-green">Error Status Codes</h2>
+      <p>The API may return the following error status codes:</p>
+      <div class="card bg-dark">
+        <div class="card-body">
+          <table class="table table-dark table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Status Code</th>
+                <th scope="col">Description</th>
+                <th scope="col">Possible Reasons</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">400 Bad Request</th>
+                <td>The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).</td>
+                <td>
+                  <ul>
+                    <li>Missing required fields in the request body.</li>
+                    <li>Invalid values provided for fields (e.g., invalid mode, shift out of range).</li>
+                    <li>Incorrect data types used for fields.</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">500 Internal Server Error</th>
+                <td>The server encountered an unexpected condition that prevented it from fulfilling the request.</td>
+                <td>
+                  <ul>
+                    <li>Unexpected errors in the server-side code.</li>
+                    <li>Issues with server resources or dependencies.</li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
