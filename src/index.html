@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,39 +9,50 @@
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   <style>
     .matrix-green {
-  color: #00FF00; /* Matrix green */
-}
+      color: #00FF00;
+      /* Matrix green */
+    }
 
-.accent-color {
-  color: #00FFFF; /* Cyan */
-}
+    .accent-color {
+      color: #00FFFF;
+      /* Cyan */
+    }
 
-pre {
-  background-color: #212529; /* Dark background for code blocks */
-  color: #eee; /* Light text color for code blocks */
-  padding: 1rem;
-  border-radius: 0.5rem;
-  overflow-x: auto;
-  white-space: pre-wrap; /* Allow line breaks in preformatted text */
-  word-break: break-all; /* Break long words */
-}
+    pre {
+      background-color: #212529;
+      /* Dark background for code blocks */
+      color: #eee;
+      /* Light text color for code blocks */
+      padding: 1rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      /* Allow line breaks in preformatted text */
+      word-break: break-all;
+      /* Break long words */
+    }
 
-.code-container {
-  display: flex;
-  flex-direction: column; /* Stack code examples vertically on small screens */
-  align-items: stretch;
-}
+    .code-container {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
 
-.code-container .card {
-  flex: 1;
-  margin-bottom: 1rem; /* Add spacing between examples on small screens */
-}
+    .code-container .card {
+      flex: 1;
+      margin-bottom: 1rem;
+    }
 
-@media (min-width: 768px) {
-  .code-container {
-    flex-direction: row; /* Display examples side-by-side on larger screens */
-  }
-}
+    footer p {
+      margin-top: 0.25rem;
+      margin-bottom: 0.25rem;
+    }
+
+    @media (min-width: 768px) {
+      .code-container {
+        flex-direction: row;
+      }
+    }
   </style>
 </head>
 
@@ -48,7 +60,9 @@ pre {
   <div class="container">
     <header class="mt-5">
       <h1 class="display-4 matrix-green">Cipher API</h1>
-      <p class="lead">by Jonathan Rampersad</p> <p class="lead">This API provides endpoints for encrypting and decrypting messages using various classical ciphers. 
+      <p class="lead">by Jonathan Rampersad</p>
+      <p class="lead">This API provides endpoints for encrypting and decrypting messages using various classical
+        ciphers.
         Explore the documentation below to learn how to integrate these ciphers into your applications.</p>
     </header>
 
@@ -58,7 +72,8 @@ pre {
         cipher that shifts each letter in the plaintext message a certain number of positions down the alphabet.</p>
       <div class="card bg-dark">
         <div class="card-body">
-          <h5 class="card-title"><span class="accent-color">POST</span> <span class="accent-color">/api/caeser</span></h5>
+          <h5 class="card-title"><span class="accent-color">POST</span> <span class="accent-color">/api/caeser</span>
+          </h5>
           <p class="card-text">Encrypts or decrypts text using the Caesar cipher.</p>
           <h6 class="matrix-green">Request Body</h6>
           <pre>
@@ -126,7 +141,8 @@ print(response.json())
         encrypting alphabetic text using a polyalphabetic substitution based on the letters of a keyword.</p>
       <div class="card bg-dark">
         <div class="card-body">
-          <h5 class="card-title"><span class="accent-color">POST</span> <span class="accent-color">/api/vigenere</span></h5>
+          <h5 class="card-title"><span class="accent-color">POST</span> <span class="accent-color">/api/vigenere</span>
+          </h5>
           <p class="card-text">Encrypts or decrypts text using the Vigenere cipher.</p>
           <h6 class="matrix-green">Request Body</h6>
           <pre>
@@ -194,7 +210,8 @@ print(response.json())
         cipher that reverses the alphabet, so 'A' becomes 'Z', 'B' becomes 'Y', and so on.</p>
       <div class="card bg-dark">
         <div class="card-body">
-          <h5 class="card-title"><span class="accent-color">POST</span> <span class="accent-color">/api/atbash</span></h5>
+          <h5 class="card-title"><span class="accent-color">POST</span> <span class="accent-color">/api/atbash</span>
+          </h5>
           <p class="card-text">Encrypts or decrypts text using the Atbash cipher.</p>
           <h6 class="matrix-green">Request Body</h6>
           <pre>
@@ -269,7 +286,9 @@ print(response.json())
             <tbody>
               <tr>
                 <th scope="row">400 Bad Request</th>
-                <td>The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).</td>
+                <td>The server cannot or will not process the request due to something that is perceived to be a client
+                  error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).
+                </td>
                 <td>
                   <ul>
                     <li>Missing required fields in the request body.</li>
@@ -295,18 +314,18 @@ print(response.json())
     </section>
 
   </div>
+
   <footer class="bg-dark text-light py-4 mt-5">
     <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <p style="font-size: 12px;">&copy; 2023 Jonathan Rampersad. This work is licensed under a <a href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank" rel="noopener noreferrer">GNU General Public License v3.0</a>.</p>
-        </div>
-        <div class="col-md-6 text-md-end">
-          <a style="font-size: 12px; text-decoration: none;" href="https://github.com/jono-rams/cipher-api" target="_blank" rel="noopener noreferrer">
+      <div style="text-align: center;">
+        <p style="font-size: 12px;">&copy; 2023 Jonathan Rampersad.
+          <a style="font-size: 12px; text-decoration: none;" href="https://github.com/jono-rams/cipher-api"
+            target="_blank" rel="noopener noreferrer">
             <img src="img/github-logo.svg" alt="GitHub logo" height="24">
-            View on GitHub
           </a>
-        </div>
+        </p>
+        <p class="">This work is licensed under a <a href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"
+            rel="noopener noreferrer">GNU General Public License v3.0</a>.</p>
       </div>
     </div>
   </footer>
@@ -315,4 +334,5 @@ print(response.json())
     integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
     crossorigin="anonymous"></script>
 </body>
+
 </html>
